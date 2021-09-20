@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 namespace AppMvcLoginReg.Areas.Identity.Data
 {
     // Add profile data for application users by adding properties to the ApplicationUser class
+    //modelo de datos para usuarios
     public class ApplicationUser : IdentityUser
     {
         [PersonalData]

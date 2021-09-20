@@ -1,0 +1,46 @@
+﻿@model Alumnos
+
+@{ 
+    ViewData["Title"] = "Crear Alumno";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container ">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Nuevo Alumno</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form method="post" asp-action="Crear">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="NombreCompleto" class="custom-control-label"></label>
+                    <input asp-for="NombreCompleto" class="form-control" />
+                    <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CursoActual" class="custom-control-label"></label>
+                    <input asp-for="CursoActual" class="form-control" />
+                    <span asp-validation-for="CursoActual" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefono" class="custom-control-label"></label>
+                    <input asp-for="Telefono" class="form-control" />
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="custom-control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Nuevo Alumno" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

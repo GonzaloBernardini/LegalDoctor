@@ -1,6 +1,8 @@
+using AppMvcLoginReg.DatosCrud;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,8 @@ namespace AppMvcLoginReg
             services.AddControllersWithViews();
             //Agrego el servicio para paginas razor
             services.AddRazorPages();
+            //Agregar cadena de conexion al contexto App db context del mod crud
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQL")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

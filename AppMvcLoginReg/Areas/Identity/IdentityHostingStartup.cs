@@ -19,10 +19,10 @@ namespace AppMvcLoginReg.Areas.Identity
                 services.AddDbContext<AppMvcLoginRegDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AppMvcLoginRegDbContextConnection")));
-
+                //Conexion con los usuarios! no borrar
                 services.AddDefaultIdentity<ApplicationUser>(options =>
                 {
-                   
+                   //opciones para identificacion de usuarios
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
