@@ -1,0 +1,40 @@
+﻿@model AppMvcLoginReg.Models.Curso
+
+<h4>Editar Curso</h4>
+<div>
+    <form asp-action="Editar">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="IdCurso" />
+        <div>
+            <label asp-for="NombreCurso"></label>
+            <input asp-for="NombreCurso" />
+            <span asp-validation-for="NombreCurso"></span>
+        </div>
+        <div>
+            <label asp-for="NumeroDeClases"></label>
+            <input asp-for="NumeroDeClases" />
+            <span asp-validation-for="NumeroDeClases"></span>
+        </div>
+        <div>
+            <label asp-for="ValorCursos"></label>
+            <input asp-for="ValorCursos" />
+            <span asp-validation-for="ValorCursos"></span>
+        </div>
+        <div>
+            <label asp-for="FechaInicioCurso"></label>
+            <input asp-for="FechaInicioCurso" />
+            <span asp-validation-for="FechaInicioCurso"></span>
+        </div>
+        <div>
+            <label asp-for="FechaFinalizacionCurso"></label>
+            <input asp-for="FechaFinalizacionCurso" />
+            <span asp-validation-for="FechaFinalizacionCurso"></span>
+        </div>
+        <div>
+            <input type="submit" value="Guardar Cambios" />
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index">Volver Atras</a>
+</div>

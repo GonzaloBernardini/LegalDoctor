@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AppMvcLoginReg.Models.Curso>
+@{
+    ViewData["Title"] = "Cursos";
+}
+
+<p>
+    <a asp-action="Create">Nuevo Curso</a>
+</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NombreCurso)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*Aca uso codigo para mostrar los registros de mi base de datos *@
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCurso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroDeClases)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorCursos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaInicioCurso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaFinalizacionCurso)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.IdCurso">Editar</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-controller="Curso" asp-route-id="@item.IdCurso">Borrar</a>
+                </td>
+            </tr>
+            }
+           
+        </tbody>
+    </table>

@@ -441,6 +441,12 @@ C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor
 C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_Authent_Layout.cshtml.g.cs
-C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Alumnos\Index.cshtml.g.cs
-C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Alumnos\Crear.cshtml.g.cs
-C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Alumnos\Editar.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Curso\Index.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Curso\Editar.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Curso\Delete.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Curso\Create.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Alumno\Create.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Alumno\Delete.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Alumno\Details.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Alumno\Edit.cshtml.g.cs
+C:\Users\gbern\source\repos\AppMvcLoginReg\AppMvcLoginReg\obj\Debug\net5.0\Razor\Views\Alumno\Index.cshtml.g.cs

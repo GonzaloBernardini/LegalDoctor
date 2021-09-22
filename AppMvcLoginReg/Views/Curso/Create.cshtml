@@ -1,0 +1,41 @@
+﻿@model AppMvcLoginReg.Models.Curso
+
+<h4>Crear Curso</h4>
+
+
+<div>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="NombreCurso"></label>
+            <input asp-for="NombreCurso" />
+            <span asp-validation-for="NombreCurso"></span>
+        </div>
+        <div>
+            <label asp-for="NumeroDeClases"></label>
+            <input asp-for="NumeroDeClases" />
+            <span asp-validation-for="NumeroDeClases"></span>
+        </div>
+        <div>
+            <label asp-for="ValorCursos"></label>
+            <input asp-for="ValorCursos" />
+            <span asp-validation-for="ValorCursos"></span>
+        </div>
+        <div>
+            <label asp-for="FechaInicioCurso"></label>
+            <input asp-for="FechaInicioCurso" />
+            <span asp-validation-for="FechaInicioCurso"></span>
+        </div>
+        <div>
+            <label asp-for="FechaFinalizacionCurso"></label>
+            <input asp-for="FechaFinalizacionCurso" />
+            <span asp-validation-for="FechaFinalizacionCurso"></span>
+        </div>
+        <div>
+            <input type="submit" value="Crear" />
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">Volver</a>
+    </div>
+</div>
