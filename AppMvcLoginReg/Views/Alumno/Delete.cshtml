@@ -1,5 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model AppMvcLoginReg.Models.Alumno
+
+<h3>Esta usted seguro de querer eliminar el siguiente Alumno?</h3>
+<div>
+    <h4>Alumno</h4>
+    <hr />
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card hoverable blue darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title"><b>@Html.DisplayFor(model => model.Nombre)@Html.DisplayFor(model => model.Apellido)</b></span>
+                   
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Nota1)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Nota1)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Nota2)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Nota2)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.PromedioFinal)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.PromedioFinal)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Inasistencias)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Inasistencias)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Seguimiento)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Seguimiento)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-action blue-grey darken-2">
+                    <form asp-action="Delete">
+                    <input type="hidden" asp-for="IdAlumno" />
+                        
+                    <input type="submit" value="Eliminar" class="waves-effect waves-light btn-small" />
+                    
+                    <a asp-action="Index" class="right">Volver</a>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    </div>
+<form>
+    <input asp-for="AlumnoCurso" />
+    <label asp-for="AlumnoCurso"></label>
+    <span asp-validation-for="AlumnoCurso"></span>
+</form>

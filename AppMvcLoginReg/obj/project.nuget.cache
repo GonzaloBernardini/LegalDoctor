@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r1vMdJJ4Q0SdyfduADqR2yEYd9ssazAvCQphJMLT3lRp+e1OWfKR/1Z8cLRXp/Ipe36irVQMqAKeqjn1io2Cug==",
+  "dgSpecHash": "Y0j8rGByJt3vo98p3X/8mZtDgJ7BDNuMDshE/X85/DvmZk7lY2hiYi+NMUN8IA21qnbu6z1N+8PQRsGwHGOfgA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gbern\\source\\repos\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj",
+  "projectFilePath": "C:\\Users\\gbern\\Desktop\\REPO\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gbern\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\gbern\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.10\\microsoft.aspnetcore.cryptography.internal.5.0.10.nupkg.sha512",

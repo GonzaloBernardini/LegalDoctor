@@ -4,14 +4,19 @@
 }
 
 <p>
-    <a asp-action="Create">Nuevo Curso</a>
+    <a class="btn-floating btn-large green darken-1" asp-action="Create"><i class="material-icons">school</i></a>
 </p>
 
-    <table>
+    <table class="responsive-table highlight z-depth-3 blue lighten-5">
         <thead>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.NombreCurso)</th>
+                <th>@Html.DisplayNameFor(model => model.NumeroDeClases)</th>
+                <th>@Html.DisplayNameFor(model => model.ValorCursos)</th>
+                <th>@Html.DisplayNameFor(model => model.FechaInicioCurso)</th>
+                <th>@Html.DisplayNameFor(model => model.FechaFinalizacionCurso)</th>
             </tr>
+            
         </thead>
         <tbody>
             @*Aca uso codigo para mostrar los registros de mi base de datos *@
@@ -37,7 +42,17 @@
                     <a asp-action="Editar" asp-route-id="@item.IdCurso">Editar</a>
                 </td>
                 <td>
-                    <a asp-action="Delete" asp-controller="Curso" asp-route-id="@item.IdCurso">Borrar</a>
+                    <form asp-action="Delete" asp-controller="Curso" asp-route-id="@item.IdCurso">
+                        
+                        <input type="hidden" asp-for="@item.IdCurso" />
+                        <div class="col s6 m6">
+                            <button class="btn waves-effect waves-light red accent-4" type="submit" name="action">
+                                Borrar
+                                <i class="material-icons right ">send</i>
+                            </button></div>
+
+                    </form>
+                        @*<a asp-action="Delete" asp-controller="Curso" asp-route-id="@item.IdCurso">Borrar</a>*@
                 </td>
             </tr>
             }

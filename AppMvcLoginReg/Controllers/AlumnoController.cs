@@ -20,22 +20,24 @@ namespace AppMvcLoginReg.Controllers
 
 
         //GET : ALUMNO
-        public IActionResult Index()
-        {
-            return View(_context.Alumno.ToList());
+        public async Task<IActionResult>  Index()
+        {                       //bd.tabla alumno.cree una lista y la muestre
+            return View(await _context.Alumno.ToListAsync());
         }
 
-        //GET: ALUMNO DETAILS
 
-        public IActionResult Details(int? id)
+
+        //GET: ALUMNO DETAILS
+                                                 //acepta recibir id nulos
+        public async Task<IActionResult>  Details(int? id)
         {
             if (id == null)
             {
+                //si el id es nulo retorna no se encuentra(pag excepcion)
                 return NotFound();
             }
-
-            var alumno = _context.Alumno
-                .Where(m => m.IdAlumno == id).Include(m => m.AlumnoCurso).ThenInclude(a => a.Curso).FirstOrDefault();
+            //creo variable y le asigno en bd.tabla alumno.donde.IdAlumno sea igual al id que recibo(vista detalle)
+            var alumno = await _context.Alumno.Where(m => m.IdAlumno == id).Include(m => m.AlumnoCurso).ThenInclude(a => a.Curso).FirstOrDefaultAsync();
 
             if (alumno == null)
             {
@@ -58,22 +60,22 @@ namespace AppMvcLoginReg.Controllers
 
         //POST: ALUMNO/CREATE
 
-       [HttpPost]
+        [HttpPost]
        [ValidateAntiForgeryToken]
-
-       public IActionResult Create([Bind("IdAlumno,Nombre,Apellido,Email,Nota1,Nota2,PromedioFinal,CursoAsignado,Inasistencias,Seguimiento")] Alumno alumno,int IdCurso)
+       
+       public async Task<IActionResult>  Create([Bind("IdAlumno,Nombre,Apellido,Email,Nota1,Nota2,PromedioFinal,Inasistencias,Seguimiento")] Alumno alumno,int IdCurso)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(alumno);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 var alumnoCurso = new AlumnoCurso();
                 alumnoCurso.IdAlumno = alumno.IdAlumno;
 
                 alumnoCurso.IdCurso = IdCurso;
                 _context.Add(alumnoCurso);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -81,20 +83,27 @@ namespace AppMvcLoginReg.Controllers
         }
 
         //GET ALUMNO/EDIT
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult>  Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+
             //Consulta tipo select+InnerJoin para buscar en dos tablas distintas
-            var alumno = _context.Alumno.Where(m => m.IdAlumno == id).Include(m => m.AlumnoCurso).FirstOrDefault();
+            //Colocamos los datos del alumno a alumno y los registros de la tabla AlumnoCurso y si corresponde con IdAlumno
+            var alumno = await _context.Alumno.Where(m => m.IdAlumno == id).Include(m => m.AlumnoCurso).FirstOrDefaultAsync();
+            //var alumno = await _context.Alumno.FindAsync(id);
+
+
+
             if (alumno == null)
             {
                 return NotFound();
             }
+            
 
-            ViewData["ListadoCursos"] = new SelectList(_context.Curso, "IdCurso", "NombreCurso", alumno.AlumnoCurso[0].IdCurso);
+            ViewData["ListadoCursos"] = new SelectList(_context.Curso, "IdCurso", "NombreCurso", alumno.AlumnoCurso);
 
 
             return View(alumno);
@@ -108,10 +117,10 @@ namespace AppMvcLoginReg.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public IActionResult Edit(int id, [Bind("IdAlumno,Nombre,Apellido,Email,Nota1,Nota2,PromedioFinal,CursoAsignado,Inasistencias,Seguimiento")] Alumno alumno, int IdCurso)
+        
+        public async Task<IActionResult>  Edit(int id, [Bind("IdAlumno,Nombre,Apellido,Email,Nota1,Nota2,PromedioFinal,Inasistencias,Seguimiento,IdCurso")] Alumno alumno, int IdCurso)
         {
-            if(id != alumno.IdAlumno)
+            if (id != alumno.IdAlumno)
             {
                 return NotFound();
             }
@@ -120,15 +129,15 @@ namespace AppMvcLoginReg.Controllers
                 try
                 {
                     _context.Update(alumno);
-                    _context.SaveChanges();
-                    var alumnoCurso = _context.AlumnoCurso.FirstOrDefault(m => m.IdAlumno == id);
+                    await _context.SaveChangesAsync();
+                    var alumnoCurso = await _context.AlumnoCurso.FirstOrDefaultAsync(m => m.IdAlumno == id);
 
-                    _context.Remove(alumnoCurso);
-                    _context.SaveChanges();
+                     _context.Remove(alumnoCurso);
+                     await _context.SaveChangesAsync();
 
                     alumnoCurso.IdCurso = IdCurso;
                     _context.Add(alumnoCurso);
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
 
 
 
@@ -151,38 +160,38 @@ namespace AppMvcLoginReg.Controllers
 
 
         //GET: ALUMNO/DELETE
-        //public IActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var alumno = _context.Alumno.FirstOrDefault(m => m.IdAlumno == id);
-        //    if (alumno == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(alumno);
+            var alumno = await _context.Alumno.FirstOrDefaultAsync(m => m.IdAlumno == id);
+            if (alumno == null)
+            {
+                return NotFound();
+            }
+            return View(alumno);
 
-        //}
+        }
 
 
 
         //POST ALUMNO/DELETE
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
 
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult>  Delete(int id)
         {
 
-            var alumnoCurso = _context.AlumnoCurso.FirstOrDefault(m => m.IdAlumno == id);
+            var alumnoCurso = await _context.AlumnoCurso.FirstOrDefaultAsync(m => m.IdAlumno == id);
 
             _context.AlumnoCurso.Remove(alumnoCurso);
 
-            var alumno = _context.Alumno.Find(id);
+            var alumno = await _context.Alumno.FindAsync(id);
             _context.Alumno.Remove(alumno);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

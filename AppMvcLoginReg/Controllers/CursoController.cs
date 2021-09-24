@@ -67,7 +67,7 @@ namespace AppMvcLoginReg.Controllers
 
 
 
-        //Metodo  GET de tipo Borrar
+        ////Metodo  GET de tipo Borrar
         //public async Task<IActionResult> Delete(int? id)
         //{
         //    //Accedemos al modelo curso, y buscara por idCurso con FirstOrDefault
@@ -82,12 +82,12 @@ namespace AppMvcLoginReg.Controllers
         //        return NotFound();
         //    }
 
-        //    return View();
+        //    return View("Index");
         //}
-       
+
 
         //Metodo POST de tipo Borrar
-        //[HttpPost]
+        [HttpPost]
         public  async Task<IActionResult> Delete(int? id)
         {
             var curso = await _context.Curso.FindAsync(id);
@@ -107,6 +107,8 @@ namespace AppMvcLoginReg.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+                                                    //Son los campos del formulario que valida
         public async Task<IActionResult> Create([Bind("IdCurso,NombreCurso,NumeroDeClases,ValorCursos,FechaInicioCurso,FechaFinalizacionCurso")] Curso curso )
         {
             if (ModelState.IsValid)

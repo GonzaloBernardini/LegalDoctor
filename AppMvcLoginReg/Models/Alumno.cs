@@ -13,14 +13,19 @@ namespace AppMvcLoginReg.Models
         
         public int IdAlumno { get; set; }
 
-        
+
+        [Required(ErrorMessage="El campo nombre nombre   es obligatorio")]
         public string Nombre { get; set; }
 
-        
+
+        [Required(ErrorMessage="El campo  apellido es obligatorio")]
         public string Apellido { get; set; }
 
-        
+        [Display(Name ="Ingrese Email")]
+        [Required(ErrorMessage="El campo email  es obligatorio")]
+        [EmailAddress(ErrorMessage ="No es una direccion de email válida")]
         public string Email { get; set; }
+        
 
         [Display(Name = "Introduzca Nota 1")]
         public float? Nota1 { get; set; }
@@ -31,11 +36,8 @@ namespace AppMvcLoginReg.Models
         [Display(Name = "Resultado Promedio Final")]
         public float? PromedioFinal { get; set; }
 
-        
-        [Display(Name = "Curso del Alumno")]
-        public Curso CursoAsignado { get; set; }
-
-        [Display(Name = " Introduzca Inasistencias")]
+           
+        [Display(Name = "Inasistencias del Alumno")]
         public int? Inasistencias { get; set; }
 
         [Display(Name = "Seguimiento del alumno")]

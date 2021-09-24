@@ -30,11 +30,14 @@
             <input asp-for="FechaFinalizacionCurso" />
             <span asp-validation-for="FechaFinalizacionCurso"></span>
         </div>
-        <div>
-            <input type="submit" value="Guardar Cambios" />
+        <div >
+            <button class="btn waves-effect waves-light green accent-3" type="submit" name="action">
+                Guardar Cambios
+                <i class="material-icons right ">send</i>
+            </button>
         </div>
     </form>
 </div>
 <div>
-    <a asp-action="Index">Volver Atras</a>
+    <a asp-action="Index" class="waves-effect waves-light btn grey darken-4">Volver atras<i class="material-icons left">undo</i></a>
 </div>

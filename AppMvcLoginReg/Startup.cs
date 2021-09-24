@@ -2,6 +2,7 @@ using AppMvcLoginReg.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +26,13 @@ namespace AppMvcLoginReg
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddSession(options =>
+            {
+                //Definimos un middleware para el manejo de sesiones en nuestra pagina
+                options.IdleTimeout = TimeSpan.FromSeconds(300);//Duracion de la sesion 5 min.
+                options.Cookie.HttpOnly = true; //Almacena la cookie en el navegador para mas seguridad
+            });
+            services.AddControllersWithViews(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
             //Agrego el servicio para paginas razor
             services.AddRazorPages();
             //Agregar cadena de conexion al contexto App db context del mod crud
@@ -52,12 +59,12 @@ namespace AppMvcLoginReg
             //Le agrego que puedar usarse la autenticacion!
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
                 //Le agregamos el enrutamiento para usar paginas razor
                 endpoints.MapRazorPages();
             });

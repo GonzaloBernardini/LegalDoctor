@@ -24,6 +24,8 @@ namespace AppMvcLoginReg.Models
 
         public DbSet<AlumnoCurso> AlumnoCurso { get; set; }
 
+        public DbSet<Login> Login { get; set; }
+
         //Metodo sobreescrito
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -60,6 +62,13 @@ namespace AppMvcLoginReg.Models
             //CLAVE FORANEA ENTRE ALUMNO CURSO Y CURSO
             modelBuilder.Entity<AlumnoCurso>().HasOne(x => x.Curso).WithMany(p => p.AlumnoCurso).HasForeignKey(p => p.IdCurso);
 
+            modelBuilder.Entity<Login>(entidad =>
+            {
+                entidad.ToTable("Login");
+                entidad.HasKey(p => p.LoginId);
+                entidad.Property(m => m.Usuario).IsRequired();
+                entidad.Property(m => m.Password).IsRequired();
+            });
 
         }
 

@@ -11,8 +11,8 @@ namespace AppMvcLoginReg.Models
         [Key]
         public int IdCurso { get; set; }
 
-
-
+        [StringLength(200)]
+        [Required]
         [Display(Name = "Nombre del Curso")]
         public string NombreCurso { get; set; }
 

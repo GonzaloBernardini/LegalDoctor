@@ -32,9 +32,6 @@ namespace AppMvcLoginReg.Migrations.SistemaCursos
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int?>("CursoAsignadoIdCurso")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -65,8 +62,6 @@ namespace AppMvcLoginReg.Migrations.SistemaCursos
                         .HasColumnType("varchar(300)");
 
                     b.HasKey("IdAlumno");
-
-                    b.HasIndex("CursoAsignadoIdCurso");
 
                     b.ToTable("Alumno");
                 });
@@ -120,13 +115,24 @@ namespace AppMvcLoginReg.Migrations.SistemaCursos
                     b.ToTable("Curso");
                 });
 
-            modelBuilder.Entity("AppMvcLoginReg.Models.Alumno", b =>
+            modelBuilder.Entity("AppMvcLoginReg.Models.Login", b =>
                 {
-                    b.HasOne("AppMvcLoginReg.Models.Curso", "CursoAsignado")
-                        .WithMany()
-                        .HasForeignKey("CursoAsignadoIdCurso");
+                    b.Property<int>("LoginId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Navigation("CursoAsignado");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LoginId");
+
+                    b.ToTable("Login");
                 });
 
             modelBuilder.Entity("AppMvcLoginReg.Models.AlumnoCurso", b =>

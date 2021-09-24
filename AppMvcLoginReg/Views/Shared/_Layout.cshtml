@@ -1,45 +1,75 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@{ //Control de sesion de usuario de la pagina, se ejecuta siempre no importa donde estemos.
+    if (Context.Session.GetString("usuario")== null)
+    {
+        Context.Response.Redirect("/Login");
+    }
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Sistema de Cursos</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="~/css/materialize.min.css" media="screen,projection" />
+
+    
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sistema de Cursos</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-
-                    
-
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        @*Agrego en el navbar el acceso a la vista que administra alumnos y Cursos*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Index">Cursos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Alumno" asp-action="Index">Alumnos</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial.cshtml" />
-                </div>
+        <nav>
+            <div class="nav-wrapper purple accent-2">
+                <a href="#!" class="brand-logo center">Plataforma Alumnex</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
+                    <li><a asp-area="" asp-controller="Curso" asp-action="Index">Cursos</a></li>
+                    <li><a asp-area="" asp-controller="Alumno" asp-action="Index">Alumnos</a></li>
+                    <li><a asp-area="" asp-controller="Login" asp-action="Logout">Cerrar Sesion</a></li>
+                  
+                </ul>
             </div>
         </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
+            <li><a asp-area="" asp-controller="Curso" asp-action="Index">Cursos</a></li>
+            <li><a asp-area="" asp-controller="Alumno" asp-action="Index">Alumnos</a></li>
+            
+        </ul>
+        <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sistema de Cursos</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+
+
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>-->
+        @*Agrego en el navbar el acceso a la vista que administra alumnos y Cursos*@
+        <!--<li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Index">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Alumno" asp-action="Index">Alumnos</a>
+                    </li>
+                </ul>
+                <partial name="_LoginPartial.cshtml" />
+            </div>
+        </div>
+    </nav>-->
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -53,8 +83,16 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="~/js/materialize.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('select').formSelect();
+        })
+    </script>
 </body>
 </html>

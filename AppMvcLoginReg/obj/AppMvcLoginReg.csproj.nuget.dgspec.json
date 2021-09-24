@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gbern\\source\\repos\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj": {}
+    "C:\\Users\\gbern\\Desktop\\REPO\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gbern\\source\\repos\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj": {
+    "C:\\Users\\gbern\\Desktop\\REPO\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gbern\\source\\repos\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj",
+        "projectUniqueName": "C:\\Users\\gbern\\Desktop\\REPO\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj",
         "projectName": "AppMvcLoginReg",
-        "projectPath": "C:\\Users\\gbern\\source\\repos\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj",
+        "projectPath": "C:\\Users\\gbern\\Desktop\\REPO\\AppMvcLoginReg\\AppMvcLoginReg\\AppMvcLoginReg.csproj",
         "packagesPath": "C:\\Users\\gbern\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gbern\\source\\repos\\AppMvcLoginReg\\AppMvcLoginReg\\obj\\",
+        "outputPath": "C:\\Users\\gbern\\Desktop\\REPO\\AppMvcLoginReg\\AppMvcLoginReg\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gbern\\AppData\\Roaming\\NuGet\\NuGet.Config",
